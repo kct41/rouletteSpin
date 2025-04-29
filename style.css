@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: url(images/bg.png);
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    width: 350px;
+    height: auto;
+    aspect-ratio: 219 / 36;
+    margin: 50px 0 50px;
+    background: url(images/title.svg) center /contain no-repeat;
+  }
+
+  .roulette {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 512px;
+    height: 512px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    textarea {
+      position: absolute;
+      background: none;
+      border: none;
+      font-size: 24px;
+      text-align: center;
+      font-family: "Jua", sans-serif;
+      resize: none;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .wheel {
+      position: absolute;
+
+      &.wheel_L {
+        width: 100%;
+        height: 100%;
+        background: url(images/circleL.svg) center / contain no-repeat;
+
+        textarea {
+          width: 120px;
+          height: 30px;
+
+          &:nth-of-type(1) {
+            top: 73px;
+            left: 75px;
+            transform: rotate(-35deg);
+          }
+
+          &:nth-of-type(2) {
+            top: 76px;
+            left: 318px;
+            transform: rotate(36deg);
+          }
+
+          &:nth-of-type(3) {
+            top: 409px;
+            left: 319px;
+            transform: rotate(144deg);
+          }
+
+          &:nth-of-type(4) {
+            top: 452px;
+            left: 195px;
+            transform: rotate(180deg);
+          }
+
+          &:nth-of-type(5) {
+            top: 303px;
+            left: 1px;
+            transform: rotate(-109deg);
+          }
+        }
+      }
+
+      &.wheel_R {
+        width: 69%;
+        height: 69%;
+        background: url(images/circleR.svg) center / contain no-repeat;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+
+
+      }
+
+      &.wheel_S {
+        width: 42.5%;
+        height: 42.5%;
+        background: url(images/circleS.svg) center / contain no-repeat;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+      }
+    }
+
+    textarea {
+      width: 75px;
+      height: 60px;
+
+      &:nth-of-type(1) {
+        top: 35px;
+        left: 57px;
+        transform: rotate(-35deg);
+      }
+
+      &:nth-of-type(2) {
+        top: 34px;
+        left: 220px;
+        transform: rotate(36deg);
+      }
+
+      &:nth-of-type(3) {
+        top: 259px;
+        left: 219px;
+        transform: rotate(144deg);
+      }
+
+      &:nth-of-type(4) {
+        top: 190px;
+        left: 6px;
+        transform: rotate(251deg);
+      }
+    }
+
+    .arrow {
+      position: absolute;
+      top: 220px;
+      left: 237px;
+      width: 64px;
+      aspect-ratio: 40/ 37;
+      background: url(images/arrow.svg) center / contain no-repeat;
+    }
+
+    .frame {
+      position: absolute;
+      content: '';
+      top: 104px;
+      left: 272px;
+      width: 241px;
+      height: auto;
+      aspect-ratio: 133 / 103;
+      background: url(images/framee.svg) center / contain no-repeat;
+      z-index: 0;
+    }
+  }
+
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 320px;
+    height: 100px;
+    margin-top: 70px;
+
+    .btn {
+      width: 150px;
+      height: auto;
+      aspect-ratio: 121 / 46;
+      cursor: pointer;
+
+      &.start {
+        background: url(images/start.svg) center / contain no-repeat;
+      }
+
+      &.stop {
+        background: url(images/stop.svg) center / contain no-repeat;
+        filter: grayscale(1);
+        pointer-events: none;
+
+        &.on {
+          filter: grayscale(0);
+          pointer-events: inherit;
+        }
+      }
+    }
+  }
+}
+
+.deleteBtn {
+  position: relative;
+  left: 220px;
+  bottom: 240px;
+  width: 70px;
+  height: 70px;
+  background: url(images/delete.svg) center / contain no-repeat;
+  cursor: pointer;
+
+  span {
+    display: block;
+    position: relative;
+    margin-top: 75px;
+    padding: 0 1px 3px 1px;
+    background: #FFEBBF;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #89653B;
+  }
+}

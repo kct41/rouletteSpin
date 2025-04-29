@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>회전판 돌리기</title>
+</head>
+
+<body>
+  <section>
+    <h1 class="title"></h1>
+    <div class="roulette">
+      <div class="wheel wheel_L">
+        <textarea type="text" spellcheck="false" placeholder="직접 입력" maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder="직접 입력" maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder="직접 입력" maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder="직접 입력" maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder="직접 입력" maxlength="6"></textarea>
+      </div>
+      <div class="wheel wheel_R">
+        <textarea type="text" spellcheck="false" placeholder='직접&#10;입력' maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder='직접&#10;입력' maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder='직접&#10;입력' maxlength="6"></textarea>
+        <textarea type="text" spellcheck="false" placeholder='직접&#10;입력' maxlength="6"></textarea>
+      </div>
+      <div class="wheel wheel_S"></div>
+      <div class="arrow"></div>
+      <div class="frame"></div>
+    </div>
+    <div class="btnBox">
+      <div class="btn start"></div>
+      <div class="btn stop"></div>
+    </div>
+    <div class="deleteBtn">
+      <span>모두 지우기</span>
+    </div>
+  </section>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const startBtn = document.querySelector(".btn.start");
+    const stopBtn = document.querySelector(".btn.stop");
+    const inputs = document.querySelectorAll("input");
+    const wheels = document.querySelectorAll(".wheel");
+    const wheelL = document.querySelector(".wheel_L");
+    const wheelR = document.querySelector(".wheel_R");
+    const wheelS = document.querySelector(".wheel_S");
+    const deleteBtn = document.querySelector(".deleteBtn");
+    const textareas = document.querySelectorAll("textarea");
+
+    startBtn.addEventListener("click", function () {
+      stopBtn.classList.add("on");
+      if (animationIdL === null && animationIdR === null && animationIdS === null) { // null일때 애니메이션 
+        rotateL();
+        rotateR();
+        rotateS();
+      }
+    })
+
+    let angle = 0;
+    let animationIdL = null;
+    let animationIdR = null;
+    let animationIdS = null;
+
+    function rotateL() {
+      angle += 4;
+      wheels[0].style.transform = `rotate(${angle}deg)`;
+      animationIdL = requestAnimationFrame(rotateL);
+    }
+
+    function rotateR() {
+      angle += 4;
+      wheels[1].style.transform = `rotate(${angle}deg)`;
+      animationIdR = requestAnimationFrame(rotateR);
+    }
+    function rotateS() {
+      angle += 4;
+      wheels[2].style.transform = `rotate(${angle}deg)`;
+      animationIdS = requestAnimationFrame(rotateS);
+    }
+
+    //randomNum 3개 뽑아서 순서대로 배분
+    stopBtn.addEventListener("click", function () {
+      cancelAnimationFrame(animationIdL);
+      cancelAnimationFrame(animationIdR);
+      cancelAnimationFrame(animationIdS);
+
+      let randomNum = [];
+      for (let i = 0; i < 3; i++) {
+        randomNum.push(Math.floor(Math.random() * 10) + 1);
+      }
+
+      const degrees = [36, 36, 72];
+      for (let i = 0; i < 3; i++) {
+        wheels[i].style.transform = `rotate(${degrees[i] * randomNum[i]}deg)`;
+      }
+
+      animationIdL = animationIdR = animationIdS = null;
+    })
+
+    deleteBtn.addEventListener("click", function () {
+      textareas.forEach(e => e.value = '');
+    })
+  })
+</script>
+
+</html>
