@@ -102,8 +102,6 @@ section {
         background: url(images/circleR.svg) center / contain no-repeat;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         border-radius: 50%;
-
-
       }
 
       &.wheel_S {
@@ -146,9 +144,9 @@ section {
 
     .arrow {
       position: absolute;
-      top: 220px;
-      left: 237px;
-      width: 64px;
+      top: 218px;
+      left: 236px;
+      width: 66px;
       aspect-ratio: 40/ 37;
       background: url(images/arrow.svg) center / contain no-repeat;
     }
@@ -180,6 +178,10 @@ section {
       aspect-ratio: 121 / 46;
       cursor: pointer;
 
+      &:hover {
+        transform: scale(.95);
+      }
+
       &.start {
         background: url(images/start.svg) center / contain no-repeat;
       }
@@ -207,15 +209,24 @@ section {
   background: url(images/delete.svg) center / contain no-repeat;
   cursor: pointer;
 
+  &:hover {
+    transform: scale(.95);
+  }
+
   span {
     display: block;
     position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
     margin-top: 75px;
     padding: 0 1px 3px 1px;
     background: #FFEBBF;
     font-size: 14px;
+    width: 90px;
     font-weight: 600;
+    text-align: center;
     line-height: 20px;
+    border-radius: 10px;
     color: #89653B;
   }
 }

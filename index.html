@@ -55,6 +55,7 @@
 
     startBtn.addEventListener("click", function () {
       stopBtn.classList.add("on");
+      textareas.forEach(ta => ta.style.pointerEvents = "none");
       if (animationIdL === null && animationIdR === null && animationIdS === null) { // null일때 애니메이션 
         rotateL();
         rotateR();
@@ -89,6 +90,8 @@
       cancelAnimationFrame(animationIdL);
       cancelAnimationFrame(animationIdR);
       cancelAnimationFrame(animationIdS);
+      textareas.forEach(ta => ta.style.pointerEvents = "inherit");
+      this.classList.remove("on");
 
       let randomNum = [];
       for (let i = 0; i < 3; i++) {
